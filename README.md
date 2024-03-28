@@ -15,3 +15,14 @@
 ## 03_enrichment analysis
 - compareCluster
 - GSEA
+
+## 04_visualization analysis
+- Box Plot
+- Bar Plot
+- Heat Map
+- Volcano Plot
+- Circos plot
+
+
+## other
+- Fig Legends
