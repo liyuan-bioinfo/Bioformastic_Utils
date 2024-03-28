@@ -1,9 +1,8 @@
 #'@time 202403
 #'@author Yuan
 #'@desc This is template for performing enrichment analysis of proteomics data. 
-#'@function  1-Create RDS after imputation of missing values; 
-#            2-PCA plot before data filtering; 
-#            3-Corr plot after imputation of missing values;
+#'@function  1-compareCluster for enrichment analysis; 
+#            2-GSEA for enrichment analysis; 
 
 library(dplyr)
 library(RColorBrewer)
