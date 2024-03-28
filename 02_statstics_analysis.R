@@ -1,9 +1,8 @@
 #'@time 202403
 #'@author Yuan
 #'@desc This is template for performing statistics analysis of proteomics data. 
-#'@function  1-Create RDS after imputation of missing values; 
-#            2-PCA plot before data filtering; 
-#            3-Corr plot after imputation of missing values;
+#'@function  for two samples: two-sided Student's t-test followed by BH correction; 
+#            for three samples: one-way ANOVA followed by Tukey's post-hoc test to compare protein abundances, followed by a Fisher’s method to determine significantly enriched proteins
 
 library(dplyr)
 library(RColorBrewer)
@@ -98,6 +97,7 @@ library(pheatmap)
 
         dep_df$pvalue = Pvalue
         dep_df$fdr = p.adjust(Pvalue,method = "BH")
+}
 
         Obj_list$aov_ct3_df = dep_df
         saveRDS(Obj_list, file="dataset_01.rds")    
