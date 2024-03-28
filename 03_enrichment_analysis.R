@@ -9,6 +9,9 @@ library(dplyr)
 library(RColorBrewer)
 library(ggplot2)
 library(pheatmap)
+library(enrichplot)
+library(clusterProfiler)
+library(org.Mm.eg.db)
 
 # -------------------------------------------------------------------------
 #                I - Enrichment analysis with compareCluster              #
