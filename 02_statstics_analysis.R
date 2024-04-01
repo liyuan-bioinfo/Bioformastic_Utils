@@ -28,7 +28,7 @@ library(pheatmap)
     for(i in 1:protein_num){
         temp_df = data_df[i,] %>% t() %>% as.data.frame()            
         names(temp_df) = "intensity"
-        temp_df$group = meta_df$CellType
+        temp_df$group = meta_df$celltype
     
         model = t.test(intensity ~ group, data=temp_df)
         temp_pvalue = model$p.value
@@ -69,7 +69,7 @@ library(pheatmap)
         temp_df = data_mean_df[,i] - data_mean_df[,1:ct_num]
         temp_pid = names(which(rowSums(temp_df>log2(enrich_fc)) == (ct_num-1)))
         temp_df2 = data.frame(pids=temp_pid)
-        temp_df2$CellType = names(data_mean_df)[i]
+        temp_df2$celltype = names(data_mean_df)[i]
         temp_df2$log2FC = apply(temp_df[temp_pid,-i],1,mean)        
         dep_df = rbind(dep_df,temp_df2)            
     }
@@ -84,11 +84,11 @@ library(pheatmap)
         pid_df = data_df[i,] %>% t() %>% as.data.frame()
         names(pid_df) = "pid"
         pid_df$SampleId = row.names(pid_df)
-        pid_df$CellType = meta_df$CellType
-        model = aov(data=pid_df,pid~CellType)
+        pid_df$celltype = meta_df$celltype
+        model = aov(data=pid_df,pid~celltype)
         # temp_pvalue = summary(model)[[1]]$`Pr(>F)`[1]
-        sig_df = TukeyHSD(model)$CellType #which ct is enriched
-        enriched_ct = dep_df[i,"CellType"]
+        sig_df = TukeyHSD(model)$celltype #which ct is enriched
+        enriched_ct = dep_df[i,"celltype"]
         enriched_ct_sig_df = sig_df[grep(row.names(sig_df),pattern=paste0("-",enriched_ct,"$|","^",enriched_ct,"-")),] #whethor this ct is sig. with other cts
         temp_pvalue = RecordTest::fisher.method(as.numeric(enriched_ct_sig_df[,"p adj"]))$"p.value"[[1]]  
         # temp_pvalue = max(enriched_ct_sig_df[,"p adj"])                                    
