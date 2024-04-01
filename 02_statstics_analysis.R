@@ -76,7 +76,7 @@ library(pheatmap)
 
     ## pvalue, with each sample
     row.names(dep_df) = dep_df$pids    
-    data_df = data_df[dep_df$pids,]
+    data_df = na.omit(data_df[dep_df$pids,])
     protein_num = dim(data_df)[1] #update for enriched proteins
 
     Pvalue = c()
