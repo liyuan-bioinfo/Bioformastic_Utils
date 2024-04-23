@@ -1,5 +1,11 @@
 library(pheatmap)
 library(dplyr)
+
+# set color
+{
+    ggsci::pal_npg()(10)    
+}
+
 # Pheatmap with balanced legend breaks
 {
     rm(list=ls())
