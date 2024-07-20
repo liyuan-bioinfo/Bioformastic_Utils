@@ -77,3 +77,15 @@ library(clusterProfiler)
     print(p1)
     dev.off()
 }
+
+# 设置major celltype and subtype的颜色
+library(RColorBrewer)
+display.brewer.all() #显示所有调色板
+# 获得Set1的颜色
+display.brewer.pal(9,"Set1")# "#E41A1C" "#377EB8" "#4DAF4A" "#984EA3"
+brewer.pal(9,"Set1")
+
+colorRampPalette(c("white",brewer.pal(9,"Set1")[1]))(100)[c(100)] # PC
+colorRampPalette(c("white",brewer.pal(9,"Set1")[4]))(100)[c(100,80,60,40)] #CAF
+colorRampPalette(c("white",brewer.pal(9,"Set1")[2]))(100)[c(100,80,60,40)] # Lym
+colorRampPalette(c("white",brewer.pal(9,"Set1")[3]))(100)[c(100,80,60,40,20)] # MYE
